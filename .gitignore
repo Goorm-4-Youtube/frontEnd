@@ -1,0 +1,37 @@
+# Compiled output
+/dist
+/tmp
+/out-tsc
+
+# Node
+/node
+/node_modules
+
+.env
+.env.*
+
+# Miscellaneous
+/.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+.vscode/*
+
+# log
+*.log
+*.log*
+/libpeerconnection.log
+testem.log
+
+.history/*
+/.angular/cache
+.sass-cache
+/connect.lock
+/coverage
+/typings
+
+# System files
+Thumbs.db
+.DS_Store
