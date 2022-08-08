@@ -11,11 +11,15 @@
       <button matSuffix mat-button (click)="query()"><mat-icon >search</mat-icon></button>
     </mat-form-field>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" routerLink="/upload-video" aria-label="Example icon-button with heart icon">
+    <button *ngIf="isAuthenticated" mat-icon-button class="upload-icon"
+            routerLink="/upload-video"
+            aria-label="upload-video">
       <mat-icon>video_call</mat-icon>
     </button>
-    <button *ngIf="isAuthenticated; else noAuth" [matMenuTriggerFor]="menu" mat-icon-button class="example-icon"
-            aria-label="Example icon-button with share icon">
+    <button *ngIf="isAuthenticated; else noAuth"
+            [matMenuTriggerFor]="menu"
+            mat-icon-button class="example-icon"
+            aria-label="account info">
       <mat-icon>account_circle</mat-icon>
     </button>
 
