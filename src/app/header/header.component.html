@@ -7,7 +7,7 @@
     <span class="example-spacer"></span>
 
     <mat-form-field class="search_bar" >
-      <input type="text" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+      <input type="text" matInput placeholder="Search" name= "search" [(ngModel)]= "search" (keyup.enter)="query()" >
       <button matSuffix mat-button (click)="query()"><mat-icon >search</mat-icon></button>
     </mat-form-field>
     <span class="example-spacer"></span>
