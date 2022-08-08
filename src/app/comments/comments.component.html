@@ -8,7 +8,7 @@
     <div fxFlex="60%"></div>
     <div fxFlex="40%" fxFlexAlign="end">
       <span>
-        <button mat-button>CANCEL</button>
+        <button mat-button (click)="resetCommet()">CANCEL</button>
       </span>
       <span>
         <button type="submit" (click)="postComment()" mat-button color="primary">COMMENT</button>

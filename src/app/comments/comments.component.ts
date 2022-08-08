@@ -20,7 +20,7 @@ export class CommentsComponent implements OnInit {
   constructor(private userService : UserService,private commentService: CommentsService,
               private matSnacBar: MatSnackBar) {
     this.commentsForm = new FormGroup({
-      comment: new FormControl('comment'),
+      comment: new FormControl(),
     });
 
   }
@@ -57,5 +57,9 @@ export class CommentsComponent implements OnInit {
       this.getComments();
     });
 
+  }
+
+  resetCommet() {
+    this.commentsForm.reset();
   }
 }
