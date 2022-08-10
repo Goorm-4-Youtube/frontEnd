@@ -27,13 +27,13 @@ pipeline {
       stage('Push our front-end image') { 
           steps { 
               script {
-                sh 'docker push $repository:v$BUILD_NUMBER' //docker image push
+                sh 'docker push $repository:v${env.BUILD_NUMBER}' //docker image push
               } 
           }
       } 
       stage('Cleaning up') { 
 		  steps { 
-              sh "docker rmi $repository:v$BUILD_NUMBER" // docker image remove
+              sh "docker rmi $repository:v${env.BUILD_NUMBER}" // docker image remove
           }
       } 
   }
