@@ -15,8 +15,7 @@ pipeline {
       stage('Build an image') { 
           steps { 
               script { 
-                dockerImage = docker.build repository + ":$BUILD_NUMBER" 
-                  //sh 'docker build -t $repository":v$BUILD_NUMBER" .' // docker image build
+                sh 'docker build -t $repository":v${env.BUILD_NUMBER}" .' // docker image build
               }
           } 
       }
@@ -28,13 +27,13 @@ pipeline {
       stage('Push our front-end image') { 
           steps { 
               script {
-                sh 'docker push $repository:v$BUILD_NUMBER' //docker image push
+                sh 'docker push $repository:v${env.BUILD_NUMBER}' //docker image push
               } 
           }
       } 
       stage('Cleaning up') { 
 		  steps { 
-              sh "docker rmi $repository:v$BUILD_NUMBER" // docker image remove
+              sh "docker rmi -f $repository:v${env.BUILD_NUMBER}" // docker image remove
           }
       } 
   }
