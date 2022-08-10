@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-      repository = "seonwoohongmin/jenkins-dockerhub"  // repository name of your docker hub 
+      repository = "seonwoohongmin/frontend"  // repository name of your docker hub 
       DOCKERHUB_CREDENTIALS = credentials('dockerhub') // jenkins에 등록해 놓은 docker hub credentials 이름
       dockerImage = ' ' 
   }
@@ -15,7 +15,7 @@ pipeline {
       stage('Build an image') { 
           steps { 
               script { 
-                  sh 'docker build -t $repository:v$BUILD_NUMBER .' // docker image build
+                  sh 'docker build -t $repository:v${env.BUILD_NUMBER} .' // docker image build
               }
           } 
       }
