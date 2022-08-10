@@ -49,8 +49,15 @@ export class CommentsComponent implements OnInit {
     });
   }
 
-  deleteVideo() {
-    this.commentService.deleteVideo(this.videoId).subscribe(data=>{
+  deleteConfirm(idx:number) {
+    if(confirm("Are you sure to delete comment")) {
+      this.deleteComment(idx);
+    }
+  }
+
+  deleteComment(idx:number) {
+    console.log("delete comment!")
+    this.commentService.deleteComment(this.videoId,idx).subscribe(data=>{
       console.log(data)
       this.matSnacBar.open("Comment Deleted Successfully","OK");
       this.commentsForm.get('comment')?.reset();

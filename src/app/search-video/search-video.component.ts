@@ -18,11 +18,9 @@ export class SearchVideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("query is"+this.query);
     console.log(this.query);
     this.videoService.searchVideos(this.query).subscribe(response => {
       this.searchedVideos= response;
-      console.log(this.searchedVideos);
     });
   }
 

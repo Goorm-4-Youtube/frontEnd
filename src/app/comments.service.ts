@@ -22,6 +22,10 @@ export class CommentsService {
 
   }
 
+  deleteComment(videoId: string, num: number){
+    return this.httpClient.delete("http://localhost:8080/api/videos/" + videoId +"/"+num +"/comment/delete");
+  }
+
   deleteVideo(videoId: string){
     return this.httpClient.post("http://localhost:8080/api/videos/" + videoId + "/comment/delete",null);
   }

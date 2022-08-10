@@ -17,7 +17,7 @@
   </div>
 </form>
 <mat-divider></mat-divider>
-<div class="view-comments" *ngFor="let comment of commentsDto">
+<div class="view-comments" *ngFor="let comment of commentsDto; index as i" >
   <div fxLayout="row">
     <div fxFlex="50%">
   <span>
@@ -28,9 +28,9 @@
         <a matCardTitle class="comment-author">{{comment.authorId}}</a>
       </mat-card-header>
     </div>
-    <div fxFlex="50%" class="delete-comment" fxFlexAlign="end">
+    <div fxFlex="50%" class="delete-comment" fxFlexAlign="end" >
       <button mat-icon-button>
-        <mat-icon (click)="deleteVideo()">delete</mat-icon>
+        <mat-icon (click)="deleteConfirm(i)">delete</mat-icon>
       </button>
     </div>
   </div>
