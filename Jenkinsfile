@@ -15,7 +15,8 @@ pipeline {
       stage('Build an image') { 
           steps { 
               script { 
-                  sh 'docker build -t $repository ":v$BUILD_NUMBER" .' // docker image build
+                dockerImage = docker.build repository + ":$BUILD_NUMBER" 
+                  //sh 'docker build -t $repository":v$BUILD_NUMBER" .' // docker image build
               }
           } 
       }
