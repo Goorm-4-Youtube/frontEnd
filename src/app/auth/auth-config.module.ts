@@ -5,9 +5,6 @@ import { AuthModule } from 'angular-auth-oidc-client';
 @NgModule({
   imports: [AuthModule.forRoot({
     config: {
-      authority: 'https://dev-1foz5--v.us.auth0.com',
-      redirectUrl: 'http://localhost:4200/callback',
-      clientId: 'f3VgzKT0ITlXTFh1CILg6Z5FlFV1G0ce',
       authority: 'https://goormtube.us.auth0.com/',
       redirectUrl: '/callback',
       clientId: 'OzAlzU5J9WInOnTVyQcBxPjKXFlogRlB',
@@ -15,9 +12,9 @@ import { AuthModule } from 'angular-auth-oidc-client';
       responseType: 'code',
       silentRenew: true,
       useRefreshToken: true,
-      secureRoutes: ['http://localhost:8080'],
+      secureRoutes: ['/api'],
       customParamsAuthRequest : {
-        audience: 'http://localhost:8080'
+        audience: '/api'
       }
     }
   })],
