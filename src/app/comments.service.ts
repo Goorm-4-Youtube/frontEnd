@@ -14,19 +14,19 @@ export class CommentsService {
 
 
   postComment(commentDto: any,videoId: string): Observable<any>{
-    return this.httpClient.post<any>("http://localhost:8080/api/videos/" + videoId+"/comment",commentDto);
+    return this.httpClient.post<any>("/api/videos/" + videoId+"/comment",commentDto);
   }
 
   getAllComments(videoId: string): Observable<Array<CommentDto>> {
-    return this.httpClient.get<CommentDto[]>("http://localhost:8080/api/videos/"+videoId+"/comment");
+    return this.httpClient.get<CommentDto[]>("/api/videos/"+videoId+"/comment");
 
   }
 
   deleteComment(videoId: string, num: number){
-    return this.httpClient.delete("http://localhost:8080/api/videos/" + videoId +"/"+num +"/comment/delete");
+    return this.httpClient.delete("/api/videos/" + videoId +"/"+num +"/comment/delete");
   }
 
   deleteVideo(videoId: string){
-    return this.httpClient.post("http://localhost:8080/api/videos/" + videoId + "/comment/delete",null);
+    return this.httpClient.post("/api/videos/" + videoId + "/comment/delete",null);
   }
 }
