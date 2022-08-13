@@ -3,6 +3,7 @@ export interface VideoDto{
   id: string;
   title: string;
   userId: string;
+  userName: string;
   description: string;
   tags: Array<string>;
   videoUrl: string;

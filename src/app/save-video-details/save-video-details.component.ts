@@ -99,6 +99,7 @@ export class SaveVideoDetailsComponent {
       "id": this.videoId,
       "title": this.saveVideoDetailsForm.get('title')?.value,
       "userId": this.userService.getUserId(),
+      "userName": this.userService.getUserName(),
       "description": this.saveVideoDetailsForm.get('description')?.value,
       "tags": this.tags,
       "videoUrl": this.videoUrl,
