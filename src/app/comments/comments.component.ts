@@ -33,7 +33,8 @@ export class CommentsComponent implements OnInit {
     const comment = this.commentsForm.get('comment')?.value;
     const commentDto = {
       "commentText" : comment,
-      "authorId": this.userService.getUserId()
+      "authorId": this.userService.getUserId(),
+      "authorName": this.userService.getUserName()
     }
 
     this.commentService.postComment(commentDto,this.videoId).subscribe(()=>{
