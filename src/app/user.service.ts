@@ -10,6 +10,7 @@ import {environment} from "../environments/environment";
 export class UserService {
 
   private userId: string = '';
+  private userName: string = '';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,15 +24,20 @@ export class UserService {
 
 
   registerUser() {
-     this.httpClient.get(environment.apiUrl+"/api/user/register",{responseType: "text"})
+     this.httpClient.get<Array<string>>(environment.apiUrl+"/api/user/register")
        .subscribe(data=>{
-         this.userId = data;
+         this.userId = data[0];
+         this.userName = data[1];
        });
   }
 
 
   getUserId(): string {
     return this.userId;
+  }
+
+  getUserName(): string{
+    return this.userName;
   }
 
   getHistory(): Observable<Array<VideoDto>> {
