@@ -6,6 +6,7 @@ import {UploadVideoComponent} from "./upload-video/upload-video.component";
 import {UploadVideoResponse} from "./upload-video/UploadVideoResponse";
 import {VideoDto} from "./video-dto";
 import {UserService} from "./user.service";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class VideoService {
     const formData = new FormData()
     formData.append('file', fileEntry, fileEntry.name);
 
-    return this.httpClient.post<UploadVideoResponse>("/api/videos/",formData);
+    return this.httpClient.post<UploadVideoResponse>(environment.apiUrl+"/api/videos/",formData);
 
   }
 
@@ -29,7 +30,7 @@ export class VideoService {
     formData.append('file', fileEntry, fileEntry.name);
     formData.append('videoId',videoId);
     console.log(videoId,fileEntry);
-    return this.httpClient.post("/api/videos/thumbnail",formData,{
+    return this.httpClient.post(environment.apiUrl+"/api/videos/thumbnail",formData,{
       responseType: 'text'
     });
 
@@ -37,42 +38,42 @@ export class VideoService {
   }
 
   getVideo(videoId: string): Observable<VideoDto>{
-    return this.httpClient.get<VideoDto>("/api/videos/" + videoId);
+    return this.httpClient.get<VideoDto>(environment.apiUrl+"/api/videos/" + videoId);
   }
 
   saveVideo(videoMetaData: VideoDto): Observable<VideoDto> {
     console.log(videoMetaData);
-    return this.httpClient.put<VideoDto>("/api/videos",videoMetaData);
+    return this.httpClient.put<VideoDto>(environment.apiUrl+"/api/videos",videoMetaData);
   }
 
   getAllVideos(): Observable<Array<VideoDto>> {
-    return this.httpClient.get<Array<VideoDto>>("/api/videos");
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/videos");
   }
 
   searchVideos(query: string): Observable<Array<VideoDto>> {
-    return this.httpClient.get<Array<VideoDto>>("/api/videos/"+query+"/search");
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/videos/"+query+"/search");
   }
 
   getPublicVideos(): Observable<Array<VideoDto>> {
-    return this.httpClient.get<Array<VideoDto>>("/api/videos/public");
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/videos/public");
   }
 
   getMyVideos(userId: string): Observable<Array<VideoDto>> {
-    return this.httpClient.get<Array<VideoDto>>("/api/videos/"+userId+"/videos");
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/videos/"+userId+"/videos");
   }
 
   likeVideo(videoId: string): Observable<VideoDto> {
-    return this.httpClient.post<VideoDto>("/api/videos/"+ videoId + "/like",null);
+    return this.httpClient.post<VideoDto>(environment.apiUrl+"/api/videos/"+ videoId + "/like",null);
 
   }
 
   dislikeVideo(videoId: string): Observable<VideoDto> {
-    return this.httpClient.post<VideoDto>("/api/videos/"+ videoId + "/disLike",null);
+    return this.httpClient.post<VideoDto>(environment.apiUrl+"/api/videos/"+ videoId + "/disLike",null);
 
   }
 
   deleteVideo(videoId: string): Observable<VideoDto> {
-    return this.httpClient.post<VideoDto>("/api/videos/"+ videoId+ "/delete",null);
+    return this.httpClient.post<VideoDto>(environment.apiUrl+"/api/videos/"+ videoId+ "/delete",null);
   }
 
 

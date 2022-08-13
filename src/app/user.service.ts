@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {VideoDto} from "./video-dto";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,16 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   subscribeToUser(userId: String): Observable<boolean>{
-    return this.httpClient.post<boolean>("/api/user/subscribe/"+userId,null);
+    return this.httpClient.post<boolean>(environment.apiUrl+"/api/user/subscribe/"+userId,null);
   }
 
   unSubscribeToUser(userId: String): Observable<boolean>{
-    return this.httpClient.post<boolean>("/api/user/unSubscribe/"+userId,null);
+    return this.httpClient.post<boolean>(environment.apiUrl+"/api/user/unSubscribe/"+userId,null);
   }
 
 
   registerUser() {
-     this.httpClient.get("/api/user/register",{responseType: "text"})
+     this.httpClient.get(environment.apiUrl+"/api/user/register",{responseType: "text"})
        .subscribe(data=>{
          this.userId = data;
        });
@@ -34,15 +35,16 @@ export class UserService {
   }
 
   getHistory(): Observable<Array<VideoDto>> {
-    return this.httpClient.get<Array<VideoDto>>("/api/user/history")
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/user/history")
   }
 
   getLikedVideo(): Observable<Array<VideoDto>> {
-    return this.httpClient.get<Array<VideoDto>>("/api/user/likedVideo")
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/user/likedVideo")
   }
 
+
   getDisLikedVideo(): Observable<Array<VideoDto>>{
-    return this.httpClient.get<Array<VideoDto>>("/api/user/dislikedVideo")
+    return this.httpClient.get<Array<VideoDto>>(environment.apiUrl+"/api/user/dislikedVideo")
   }
 
 }
