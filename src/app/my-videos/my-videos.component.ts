@@ -10,7 +10,7 @@ import {UserService} from "../user.service";
 })
 export class MyVideosComponent implements OnInit {
 
-  featuredVideos : Array<VideoDto> = [];
+  myVideos : Array<VideoDto> = [];
 
   constructor(private videoService: VideoService,private userService: UserService) {
 
@@ -19,7 +19,7 @@ export class MyVideosComponent implements OnInit {
   ngOnInit(): void {
 
     this.videoService.getMyVideos(this.userService.getUserId()).subscribe(response => {
-      this.featuredVideos = response;
+      this.myVideos = response;
     });
   }
 
