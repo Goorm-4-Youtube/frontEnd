@@ -13,16 +13,18 @@ export class VideoDetailComponent implements OnInit {
 
 
   videoId!: string;
+  videoUrl!: string;
   videoTitle!: string;
   videoDescription!: string;
   tags: Array<string> = [];
-  videoUrl!: string;
   videoAvailable: boolean = false;
   likeCount: number = 0;
   dislikeCount: number = 0;
   viewCount : number = 0;
   showSubscribeButton: boolean = true;
   showUnSubscribeButton: boolean = false;
+  uploader_id!: string;
+  uploader_name!: string;
 
 
   constructor(private activatedRoute : ActivatedRoute, private userService: UserService,
@@ -34,10 +36,11 @@ export class VideoDetailComponent implements OnInit {
       this.videoTitle = data.title;
       this.videoDescription = data.description;
       this.tags = data.tags
-      this.videoAvailable = true;
       this.likeCount = data.likeCount;
       this.dislikeCount = data.dislikeCount;
       this.viewCount = data.viewCount;
+      this.uploader_id = data.userId;
+      this.uploader_name = data.userName;
     })
   }
 
@@ -60,6 +63,8 @@ export class VideoDetailComponent implements OnInit {
 
 
   subscribeToUser() {
+    this.userService.registerUser();
+
     let userId = this.userService.getUserId();
     this.userService.subscribeToUser(userId).subscribe(data =>{
         this.showUnSubscribeButton = true;
@@ -68,10 +73,11 @@ export class VideoDetailComponent implements OnInit {
   }
 
   unSubscribeToUser() {
+    this.userService.registerUser();
     let userId = this.userService.getUserId();
     this.userService.unSubscribeToUser(userId).subscribe(data =>{
-      this.showUnSubscribeButton = true;
-      this.showSubscribeButton =false;
+      this.showSubscribeButton = true;
+      this.showUnSubscribeButton = false;
     });
   }
 }

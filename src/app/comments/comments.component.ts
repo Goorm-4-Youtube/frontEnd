@@ -30,6 +30,7 @@ export class CommentsComponent implements OnInit {
   }
 
   postComment() {
+    this.userService.registerUser();
     const comment = this.commentsForm.get('comment')?.value;
     const commentDto = {
       "commentText" : comment,

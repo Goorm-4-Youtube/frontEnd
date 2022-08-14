@@ -94,6 +94,7 @@ export class SaveVideoDetailsComponent {
   }
 
   saveVideo() {
+    this.userService.registerUser();
     // Call the video service to make a http call to our backend
     const videoMetaData: VideoDto = {
       "id": this.videoId,
