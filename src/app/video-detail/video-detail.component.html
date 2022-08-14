@@ -7,7 +7,7 @@
         <div fxFlex="50%">
           <span class="view-count">{{viewCount}}</span>
           <span class="dot"></span>
-          <span class="video-upload-date">Apr 13, 2021</span>
+          <span class="video-upload-date">upload date</span>
         </div>
         <div fxFlex="50%" fxLayoutAlign="end">
           <span class="like-dislike-section">
@@ -25,8 +25,8 @@
       </div>
       <mat-divider></mat-divider>
       <mat-card-header>
-        <mat-card-title>Programming Techie</mat-card-title>
-        <mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
+        <mat-card-title>{{uploader_name}}</mat-card-title>
+        <mat-card-subtitle class="subtitles">구독자수</mat-card-subtitle>
         <button *ngIf="showSubscribeButton" class="subscribe-button" mat-raised-button color="warn"
                 (click)="subscribeToUser()">SUBSCRIBE
         </button>
@@ -40,9 +40,7 @@
       <mat-divider></mat-divider>
       <mat-chip-list>
         <mat-chip *ngFor="let tag of tags">
-        {{
-        tag
-        }}
+          {{tag}}
         </mat-chip>
       </mat-chip-list>
       <mat-divider></mat-divider>
