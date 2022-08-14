@@ -15,7 +15,7 @@ pipeline {
       stage('Build an image') { 
           steps { 
               script { 
-                  sh 'cp /var/jenkins_home/workspace/environments.prod.ts /var/jenkins_home/workspace/frontendpipline/src/environments' //env 파일을 복사
+                  sh 'cp /var/jenkins_home/workspace/environment.prod.ts /var/jenkins_home/workspace/frontendpipline/src/environments' //env 파일을 복사
                   sh 'docker build -t $repository:v$BUILD_NUMBER .' // docker image build
               }
           } 
