@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {FileSystemFileEntry} from "ngx-file-drop";
 import {Observable} from "rxjs";
-import {UploadVideoComponent} from "./upload-video/upload-video.component";
 import {UploadVideoResponse} from "./upload-video/UploadVideoResponse";
 import {VideoDto} from "./video-dto";
-import {UserService} from "./user.service";
 import {environment} from "../environments/environment";
 
 @Injectable({
