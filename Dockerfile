@@ -9,7 +9,6 @@ RUN npm run build
 
 # Run
 FROM nginx:1.22-alpine
-WORKDIR /var/jenkins_home/workspace/
-COPY default.conf /etc/nginx/conf.d/
+COPY /var/jenkins_home/workspace/default.conf /etc/nginx/conf.d/
 COPY --from=build /var/jenkins_home/workspace/frontendpipline/dist/youtube-clone-ui /usr/share/nginx/html
 
