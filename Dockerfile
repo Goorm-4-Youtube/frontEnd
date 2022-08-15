@@ -7,6 +7,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Run 
+# Run
 FROM nginx:1.22-alpine
 COPY --from=build /var/jenkins_home/workspace/frontendpipline/dist/youtube-clone-ui /usr/share/nginx/html
+COPY /var/jenkins_home/workspace/default.conf /etc/nginx/conf.d/
