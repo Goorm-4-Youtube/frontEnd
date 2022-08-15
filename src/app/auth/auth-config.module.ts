@@ -7,7 +7,7 @@ import {environment} from "../../environments/environment";
   imports: [AuthModule.forRoot({
     config: {
       authority: 'https://goormtube.us.auth0.com',
-      redirectUrl: '/callback',
+      redirectUrl: 'https://goormtube.com/callback',
       clientId: 'WzqO1mFiSzQmHHF9udQXCVDVfR8KIgbg',
       scope: 'openid profile offline_access',
       responseType: 'code',
