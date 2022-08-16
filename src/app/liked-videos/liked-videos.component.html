@@ -3,6 +3,9 @@
   <h3>likedVideo</h3>
 </div>
 <div fxLayout="row wrap" fxLayoutGap="12px grid">
+  <div *ngIf="!isAuthenticated">
+    <p> 로그인 후 사용가능합니다 </p>
+  </div>
   <div fxFlex="30%" *ngFor="let likedVideo of likedVideos">
 
     <app-video-card [video]="likedVideo"></app-video-card>

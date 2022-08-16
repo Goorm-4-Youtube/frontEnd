@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VideoDto} from "../video-dto";
 import {VideoService} from "../video.service";
 import {UserService} from "../user.service";
+import {OidcSecurityService} from "angular-auth-oidc-client";
 
 @Component({
   selector: 'app-disliked-videos',
@@ -12,12 +13,17 @@ export class DislikedVideosComponent implements OnInit {
 
   dislikedVideos: Array<VideoDto> = [];
 
-  constructor(private videoService: VideoService, private userService: UserService) { }
+  isAuthenticated: boolean = false;
+  constructor(private oidcSecurityService: OidcSecurityService,private videoService: VideoService, private userService: UserService) { }
 
   ngOnInit(): void {
-
-    this.userService.getDisLikedVideo().subscribe( response => {
-      this.dislikedVideos = response;
+    this.oidcSecurityService.isAuthenticated$.subscribe(({isAuthenticated}) =>{
+      this.isAuthenticated = isAuthenticated;
+      if (this.isAuthenticated){
+        this.userService.getDisLikedVideo().subscribe( response => {
+          this.dislikedVideos = response;
+        })
+      }
     })
   }
 }

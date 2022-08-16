@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {VideoDto} from "../video-dto";
 import {VideoService} from "../video.service";
 import {UserService} from "../user.service";
+import {OidcSecurityService} from "angular-auth-oidc-client";
 
 @Component({
   selector: 'app-liked-videos',
@@ -12,13 +13,17 @@ export class LikedVideosComponent implements OnInit {
 
   likedVideos: Array<VideoDto> = [];
 
-  constructor(private videoService: VideoService, private userService: UserService) { }
+  isAuthenticated: boolean = false;
+  constructor(private oidcSecurityService: OidcSecurityService, private videoService: VideoService, private userService: UserService) { }
 
   ngOnInit(): void {
-
-    this.userService.getLikedVideo().subscribe( response => {
-      this.likedVideos = response;
+    this.oidcSecurityService.isAuthenticated$.subscribe(({isAuthenticated}) =>{
+      this.isAuthenticated = isAuthenticated;
+      if (this.isAuthenticated){
+        this.userService.getLikedVideo().subscribe( response => {
+          this.likedVideos = response;
+        })
+      }
     })
   }
-
 }

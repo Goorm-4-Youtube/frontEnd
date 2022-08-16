@@ -21,11 +21,11 @@
   <div fxLayout="row">
     <div fxFlex="50%">
   <span>
-    {{comment.commentText}}
+    {{comment.authorName}}
   </span>
       <mat-card-header>
         <div matCardAvatar class="example-header-image"></div>
-        <a matCardTitle class="comment-author">{{comment.authorName}}</a>
+        <a matCardTitle class="comment-author">{{comment.commentText}}</a>
       </mat-card-header>
     </div>
     <div fxFlex="50%" class="delete-comment" fxFlexAlign="end" >
